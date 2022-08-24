@@ -11,7 +11,7 @@ const { login, createUser } = require('./controllers/users');
 
 const { userSchemaValidate, loginValidate } = require('./utils/validation');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 4000 } = process.env;
 
 const NotFoundError = require('./utils/errors/not-found-404');
 
