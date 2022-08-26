@@ -38,6 +38,12 @@ const allowedCors = [
   'http://gogetyourknife.project.nomoredomains.sbs',
 ];
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
