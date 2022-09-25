@@ -7,6 +7,8 @@ const UnauthorizedError = require('../utils/errors/unauthorized-401');
 const NotFoundError = require('../utils/errors/not-found-404');
 const ConflictError = require('../utils/errors/conflict-409');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((user) => res.send({ data: user }))
@@ -25,8 +27,9 @@ module.exports.getUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -46,7 +49,11 @@ module.exports.login = (req, res, next) => {
         });
     })
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'super-strong-secret', { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
+        { expiresIn: '7d' },
+      );
       res.send({ token });
     })
     .catch(next);
@@ -64,8 +71,9 @@ module.exports.getUserLoggedIn = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -88,11 +96,11 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.code === 11000) {
         next(new ConflictError('Попробуйте другой email'));
-      }
-      if (err.name === 'ValidationError') {
+      } else if (err.name === 'ValidationError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -107,8 +115,9 @@ module.exports.updateProfile = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -123,7 +132,8 @@ module.exports.updateAvatar = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };

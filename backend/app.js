@@ -90,5 +90,5 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.use(limiter);
 app.listen(PORT);
+app.use(limiter);

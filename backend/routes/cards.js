@@ -10,9 +10,9 @@ const {
 } = require('../controllers/cards');
 
 router.get('/', getCards);
-router.post('/', createCard, cardSchemaValidate);
-router.put('/:cardId/likes', likeCard, likeSchemaValidate);
-router.delete('/:cardId/likes', dislikeCard, likeSchemaValidate);
-router.delete('/:cardId', deleteCard, cardDeleteSchemaValidate);
+router.post('/', cardSchemaValidate, createCard);
+router.put('/:cardId/likes', likeSchemaValidate, likeCard);
+router.delete('/:cardId/likes', likeSchemaValidate, dislikeCard);
+router.delete('/:cardId', cardDeleteSchemaValidate, deleteCard);
 
 module.exports = router;

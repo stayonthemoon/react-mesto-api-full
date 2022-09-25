@@ -12,9 +12,9 @@ const {
 
 router.get('/', getUsers);
 router.get('/me', getUserLoggedIn);
-router.get('/:userId', getUser, userIdSchemaValidate);
+router.get('/:userId', userIdSchemaValidate, getUser);
 router.post('/', createUser);
-router.patch('/me', updateProfile, profileSchemaValidate);
-router.patch('/me/avatar', updateAvatar, avatarSchemaValidate);
+router.patch('/me', profileSchemaValidate, updateProfile);
+router.patch('/me/avatar', avatarSchemaValidate, updateAvatar);
 
 module.exports = router;

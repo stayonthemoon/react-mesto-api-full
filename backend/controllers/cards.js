@@ -23,8 +23,9 @@ module.exports.createCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -44,8 +45,9 @@ module.exports.likeCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
@@ -65,15 +67,16 @@ module.exports.dislikeCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
 module.exports.deleteCard = (req, res, next) => {
   const owner = req.user._id;
   const { cardId } = req.params;
-  Card.findByIdAndRemove(cardId)
+  Card.findById(cardId)
     .then((card) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
@@ -90,7 +93,8 @@ module.exports.deleteCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Некорректный запрос'));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
