@@ -34,8 +34,8 @@ const limiter = rateLimit({
 const allowedCors = [
   'https://localhost:3000',
   'http://localhost:3000',
-  'https://gogetyourknife.nomoredomains.sbs',
-  'http://gogetyourknife.project.nomoredomains.sbs',
+  'http://gogetyourknife.nomorepartiesxyz.ru/',
+  'http://api.gogetyourknife.nomorepartiesxyz.ru/',
 ];
 
 app.get('/crash-test', () => {

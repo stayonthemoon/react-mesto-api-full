@@ -8,8 +8,8 @@ Mesto is a web application for posting photo cards with a description.
 
 Here we got both frontend and backend for the app, which is deployed with [Yandex.Cloud](https://cloud.yandex.ru/)
 
-✨[Link to App](https://gogetyourknife.project.nomoredomains.sbs/)✨ 
-[Backend is here](https://gogetyourknife.nomoredomains.sbs/)
+✨[Link to App](http://gogetyourknife.nomorepartiesxyz.ru/)✨ 
+[Backend is here](http://api.gogetyourknife.nomorepartiesxyz.ru/)
 
 ### Credits
 
