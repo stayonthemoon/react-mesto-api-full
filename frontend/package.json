@@ -2,7 +2,7 @@
   "name": "mesto-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gogetyourknife.project.nomoredomains.sbs",
+  "homepage": "https://gogetyourknife.nomorepartiesxyz.ru",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* mesto@51.250.13.9:/home/mesto/react-mesto-api-full/frontend/build"
+    "deploy": "npm run build && scp -r ./build/* mesto@178.154.200.195:/home/mesto/react-mesto-api-full/frontend/build"
   },
   "eslintConfig": {
     "extends": [
