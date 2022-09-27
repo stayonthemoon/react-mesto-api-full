@@ -1,10 +1,10 @@
 const allowedCors = [
   'https://localhost:3000',
   'http://localhost:3000',
-  'https://gogetyourknife.nomorepartiesxyz.ru/',
-  'https://api.gogetyourknife.nomorepartiesxyz.ru/',
-  'http://api.gogetyourknife.nomorepartiesxyz.ru/',
-  'http://gogetyourknife.nomorepartiesxyz.ru/',
+  'https://gogetyourknife.nomorepartiesxyz.ru',
+  'https://api.gogetyourknife.nomorepartiesxyz.ru',
+  'http://api.gogetyourknife.nomorepartiesxyz.ru',
+  'http://gogetyourknife.nomorepartiesxyz.ru',
 ];
 
 module.exports = (req, res, next) => {
@@ -12,9 +12,11 @@ module.exports = (req, res, next) => {
   const { method } = req;
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const requestHeaders = req.headers['access-control-request-headers'];
+  console.log(origin);
 
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
+    console.log(origin);
   }
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
