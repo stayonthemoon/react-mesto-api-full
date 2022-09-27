@@ -41,8 +41,6 @@ const allowedCors = [
   'http://gogetyourknife.nomorepartiesxyz.ru/',
 ];
 
-app.use(cors(allowedCors));
-
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -95,5 +93,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
+app.use(cors());
 app.listen(PORT);
 app.use(limiter);
