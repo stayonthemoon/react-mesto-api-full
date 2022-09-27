@@ -93,6 +93,6 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.use(cors());
+app.use(cors(allowedCors));
 app.listen(PORT);
 app.use(limiter);
