@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
@@ -93,6 +92,5 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.use(cors(allowedCors));
 app.listen(PORT);
 app.use(limiter);
