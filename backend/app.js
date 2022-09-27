@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
@@ -39,6 +40,8 @@ const allowedCors = [
   'http://api.gogetyourknife.nomorepartiesxyz.ru/',
   'http://gogetyourknife.nomorepartiesxyz.ru/',
 ];
+
+app.use(cors(allowedCors));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
