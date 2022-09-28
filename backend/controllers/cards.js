@@ -84,9 +84,9 @@ module.exports.deleteCard = (req, res, next) => {
       if (owner !== card.owner.toString()) {
         throw new ForbiddenError('У вас нет прав на удаление карточки');
       } else {
-        return Card.deleteOne(cardId)
+        return Card.deleteOne(card)
           .then(() => {
-            res.send({ message: 'Карточка удалена' });
+            res.send(card);
           });
       }
     })
