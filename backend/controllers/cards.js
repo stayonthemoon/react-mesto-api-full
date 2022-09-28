@@ -10,7 +10,7 @@ module.exports.getCards = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Карточка не найдена');
       }
-      res.send({ data: card });
+      res.send(card);
     })
     .catch(next);
 };
@@ -19,7 +19,7 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user._id;
   const { name, link } = req.body;
   Card.create({ name, link, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Некорректный запрос'));
@@ -86,7 +86,7 @@ module.exports.deleteCard = (req, res, next) => {
       } else {
         return Card.deleteOne(card)
           .then(() => {
-            res.send({ data: card });
+            res.send(card);
           });
       }
     })

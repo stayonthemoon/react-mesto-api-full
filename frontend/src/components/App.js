@@ -138,7 +138,8 @@ function App() {
     if (loggedIn) {
       api.getInitialCards()
         .then((cards) => {
-          setCards(cards)
+          setCards(cards);
+          console.log(cards);
         })
         .catch((err) => {
           console.log(err);
@@ -166,6 +167,7 @@ function App() {
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        console.log(card);
       })
       .catch((err) => {
         console.log(err);
@@ -176,6 +178,7 @@ function App() {
     api.deleteConfirmCard(card._id)
       .then(() => {
         setCards(cards.filter(item => item._id !== card._id));
+        console.log(card);
       })
       .catch((err) => {
         console.log(err);
@@ -186,6 +189,7 @@ function App() {
     api.addCard(name, link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
+        console.log(cards);
         closeAllPopups();
       })
       .catch((err) => {
