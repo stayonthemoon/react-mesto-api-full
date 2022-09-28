@@ -24,7 +24,6 @@ import * as Auth from '../utils/Auth';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-
 function App() {
 
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
@@ -57,7 +56,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setUserData(res.data.email);
+            setUserData(res.email);
             history.push('/');
           }
         })
@@ -75,6 +74,8 @@ function App() {
   React.useEffect(() => {
     if (loggedIn) {
       history.push('/');
+    } else {
+      history.push('/sign-in');
     }
   },
     [loggedIn, history]);
@@ -161,7 +162,7 @@ function App() {
     [loggedIn]);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
 
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
