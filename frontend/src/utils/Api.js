@@ -105,7 +105,7 @@ class Api {
 
 export const api = new Api(
   {
-    baseUrl: 'http://api.gogetyourknife.nomorepartiesxyz.ru',
+    baseUrl: 'http://api.gogetyourknife.nomoredomains.club',
     headers: {
       authorization: `Bearer ${localStorage.getItem('token')}`,
       "Content-Type": "application/json",

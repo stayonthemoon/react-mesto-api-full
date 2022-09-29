@@ -1,10 +1,10 @@
 const allowedCors = [
   'https://localhost:3000',
   'http://localhost:3000',
-  'https://gogetyourknife.nomorepartiesxyz.ru',
-  'https://api.gogetyourknife.nomorepartiesxyz.ru',
-  'http://api.gogetyourknife.nomorepartiesxyz.ru',
-  'http://gogetyourknife.nomorepartiesxyz.ru',
+  'https://gogetyourknife.nomoredomains.club',
+  'https://api.gogetyourknife.nomoredomains.club',
+  'http://api.gogetyourknife.nomoredomains.club',
+  'http://gogetyourknife.nomoredomains.club',
 ];
 
 module.exports = (req, res, next) => {
