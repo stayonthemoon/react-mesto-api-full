@@ -40,8 +40,6 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use(requestLogger);
-
 app.post('/signin', login, loginValidate);
 app.post('/signup', createUser, userSchemaValidate);
 
@@ -71,4 +69,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT);
+app.use(requestLogger);
 app.use(limiter);
