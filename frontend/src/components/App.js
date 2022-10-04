@@ -72,9 +72,7 @@ function App() {
     []);
 
   React.useEffect(() => {
-    if (loggedIn) {
-      history.push('/');
-    } else {
+    if (!loggedIn) {
       history.push('/sign-in');
     }
   },
@@ -88,8 +86,8 @@ function App() {
           isRespond: true,
           isRespondMessage: 'Вы успешно зарегистрировались!',
         });
-        setLoggedIn(true);
-        history.push('/');
+        // setLoggedIn(true);
+        history.push('/sign-in');
       })
       .catch((err) => {
         console.log(err);
