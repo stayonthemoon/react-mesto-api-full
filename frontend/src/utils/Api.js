@@ -1,7 +1,6 @@
 class Api {
   constructor(data) {
     this._baseUrl = data.baseUrl;
-    this._headers = data.headers;
   }
 
   _handleResponse(res) {
@@ -17,7 +16,10 @@ class Api {
   getProfileInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+      },
     })
       .then(this._handleResponse)
   }
@@ -27,7 +29,10 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+      },
     })
       .then(this._handleResponse)
   }
@@ -37,7 +42,10 @@ class Api {
   editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name,
         about
@@ -51,7 +59,10 @@ class Api {
   addCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         name,
         link
@@ -65,7 +76,10 @@ class Api {
   deleteConfirmCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+      },
     })
       .then(this._handleResponse)
   }
@@ -76,14 +90,20 @@ class Api {
     if (!isLiked) {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: 'DELETE',
-        headers: this._headers
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
       })
         .then(this._handleResponse)
 
     } else {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: 'PUT',
-        headers: this._headers
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+        },
       })
         .then(this._handleResponse)
     }
@@ -94,7 +114,10 @@ class Api {
   updateAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         avatar
       })
@@ -106,8 +129,4 @@ class Api {
 export const api = new Api(
   {
     baseUrl: 'https://api.gogetyourknife.nomoredomains.club',
-    headers: {
-      authorization: `Bearer ${localStorage.getItem('token')}`,
-      "Content-Type": "application/json",
-    },
   });

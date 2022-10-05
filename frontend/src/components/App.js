@@ -86,7 +86,6 @@ function App() {
           isRespond: true,
           isRespondMessage: 'Вы успешно зарегистрировались!',
         });
-        // setLoggedIn(true);
         history.push('/sign-in');
       })
       .catch((err) => {
@@ -105,7 +104,8 @@ function App() {
         if (data.token) {
           localStorage.setItem('token', data.token);
           setLoggedIn(true);
-          setUserData(email)
+          setUserData(email);
+          checkToken();
           history.push('/');
         }
       })
