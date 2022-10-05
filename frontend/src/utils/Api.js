@@ -17,6 +17,7 @@ class Api {
   getProfileInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._handleResponse)
@@ -27,6 +28,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers
     })
       .then(this._handleResponse)

@@ -54,7 +54,10 @@ module.exports.login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
         { expiresIn: '7d' },
       );
-      res.send({ token });
+      return res.cookie('jwt', token, {
+        maxAge: 0,
+        httpOnly: true,
+      });
     })
     .catch(next);
 };
@@ -137,3 +140,7 @@ module.exports.updateAvatar = (req, res, next) => {
       }
     });
 };
+
+/* module.exports.logout = (req, res) => {
+  res.clearCookie('jwt').send();
+}; */
