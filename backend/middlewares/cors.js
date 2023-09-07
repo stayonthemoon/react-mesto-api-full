@@ -5,6 +5,10 @@ const allowedCors = [
   'https://api.gogetyourknife.nomoredomains.club',
   'http://api.gogetyourknife.nomoredomains.club',
   'http://gogetyourknife.nomoredomains.club',
+  'https://api.gogetyourknife.nomorepartiesxyz.ru',
+  'http://api.gogetyourknife.nomorepartiesxyz.ru',
+  'https://gogetyourknife.nomorepartiesxyz.ru',
+  'http://gogetyourknife.nomorepartiesxyz.ru',
 ];
 
 module.exports = (req, res, next) => {

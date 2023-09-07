@@ -1,4 +1,4 @@
-export const base_URL = 'https://api.gogetyourknife.nomoredomains.club';
+export const base_URL = 'https://api.gogetyourknife.nomorepartiesxyz.ru';
 
 export const _handleResponse = (res) => {
     if (res.ok) {
